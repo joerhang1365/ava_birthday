@@ -5,11 +5,17 @@ SDL_Renderer *renderTarget = NULL;
 SDL_Event event;
 SDL_Rect drawingRect;
 
+textBox myText;
+
 // clock
 float frameTime = 0;
 int previousTime = 0;
 int currentTime = 0;
 float deltaTime = 0;
+
+// font
+TTF_Font* font = NULL;
+SDL_Color color = {40, 190, 60};
 
 bool running = true;
 
@@ -63,7 +69,22 @@ bool initialize()
       printf("error unknown image type\n");
    }
 
-   level_load(&templateLevel, renderTarget); 
+   // initialize ttf
+   if(TTF_Init() == -1)
+   {
+      printf("error initializing ttf\n");
+      return false;
+   }
+
+   font = TTF_OpenFont("src/fonts/serif.ttf", 12);
+   if(font == NULL)
+   {
+      printf("error creating font\n");
+      return false;
+   }
+
+   level_load(&templateLevel, renderTarget);
+   textBox_load(&myText, "What is going on? Where can I get one of those?", renderTarget);
 
    return true;
 }
@@ -100,6 +121,7 @@ void render()
    SDL_SetRenderDrawColor(renderTarget, 14.0f, 96.0f, 39.0f, 1.0f);
 
    level_render(templateLevel, renderTarget);
+   textBox_render(myText, renderTarget);
 
    // pixel grid lines
    SDL_SetRenderDrawColor(renderTarget, 1.0f, 1.0f, 1.0f, 1.0f);

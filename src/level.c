@@ -12,11 +12,11 @@ level templateLevel =
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', 'f', ' ', ' ', ' ', ' ', 'f', ' ', ' ', ' ', ' ', ' ',
-      ' ', ' ', ' ', ' ', 'f', ' ', ' ', 'g', 'g', ' ', ' ', 'f', ' ', ' ', ' ', ' ',
-      ' ', ' ', ' ', ' ', ' ', ' ', 'g', 'g', 'g', 'g', ' ', ' ', ' ', ' ', ' ', ' ',
+      ' ', ' ', ' ', ' ', 'f', ' ', 'g', 'g', 'g', 'g', ' ', 'f', ' ', ' ', ' ', ' ',
+      ' ', ' ', ' ', ' ', ' ', ' ', 'g', ' ', ' ', 'g', ' ', ' ', ' ', ' ', ' ', ' ',
       'g', 'g', 'g', 'g', 'g', 'g', 'g', ' ', ' ', 'g', 'g', 'g', 'g', 'g', 'g', 'g',
       ' ', ' ', ' ', ' ', 'f', ' ', 'g', 'g', 'g', 'g', ' ', 'f', ' ', ' ', 'r', ' ',
-      ' ', ' ', 'l', ' ', ' ', 'f', ' ', 'g', 'g', ' ', 'f', ' ', ' ', 'r', ' ', ' ',
+      ' ', ' ', 'l', ' ', ' ', 'f', ' ', ' ', ' ', ' ', 'f', ' ', ' ', 'r', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w',
       'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w',
@@ -129,7 +129,7 @@ void level_render(level level, SDL_Renderer *renderTarget)
    SDL_RenderCopy(renderTarget, level.textures[1], NULL, &birthdayRect);
 
    // heart
-   animator_renderFrame(level.animations[2], 112 * SCREEN_SCALE, 118 * SCREEN_SCALE, 32 * SCREEN_SCALE, 32 * SCREEN_SCALE, renderTarget);
+   animator_renderFrame(level.animations[2], 113 * SCREEN_SCALE, 112 * SCREEN_SCALE, 32 * SCREEN_SCALE, 32 * SCREEN_SCALE, renderTarget);
   
    // bigmama
    animator_renderFrame(level.animations[4], 32 * SCREEN_SCALE, 96 * SCREEN_SCALE, 32 * SCREEN_SCALE, 32 * SCREEN_SCALE, renderTarget);

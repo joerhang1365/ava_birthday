@@ -2,6 +2,7 @@
 #define CONTAINER_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
@@ -9,6 +10,7 @@
 #include "texture.h"
 #include "animator.h"
 #include "level.h"
+#include "graphicalUserInterface.h"
 
 #define PI 3.14159264
 
@@ -22,6 +24,10 @@ extern float frameTime;
 extern int previousTime;
 extern int currentTime;
 extern float deltaTime;
+
+// font
+extern TTF_Font* font;
+extern SDL_Color color;
 
 int container();
 bool initialize();
