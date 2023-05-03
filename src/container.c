@@ -7,6 +7,9 @@ SDL_Rect drawingRect;
 
 textBox myText;
 
+animator *x_animator = NULL;
+SDL_Texture *x_texture = NULL;
+
 // clock
 float frameTime = 0;
 int previousTime = 0;
@@ -16,6 +19,9 @@ float deltaTime = 0;
 // font
 TTF_Font* font = NULL;
 SDL_Color color = {40, 190, 60};
+
+// keys
+bool x_key = false;
 
 bool running = true;
 
@@ -50,7 +56,7 @@ bool initialize()
    }
    else
    {
-      window = SDL_CreateWindow("It's Ya Birthday Baby", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+      window = SDL_CreateWindow("Birtday Time", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
             SCREEN_WIDTH * SCREEN_SCALE, SCREEN_HEIGHT * SCREEN_SCALE, SDL_WINDOW_SHOWN);
       if(window == NULL)
       {
@@ -84,7 +90,11 @@ bool initialize()
    }
 
    level_load(&templateLevel, renderTarget);
-   textBox_load(&myText, "What is going on? Where can I get one of those?", renderTarget);
+   textBox_load(&myText, "Thank you for being there for me. I LOVE you so much.", renderTarget);
+
+   x_animator = (animator*) malloc(sizeof(animator));
+   x_texture = texture_load("src/images/pressx.png", renderTarget);
+   animator_create(x_animator, x_texture, 32, 16, 2);
 
    return true;
 }
@@ -94,6 +104,13 @@ void events(SDL_Event *event)
    if(event->type == SDL_QUIT)
    {
       running = false;
+   }
+   else if(event->type == SDL_KEYDOWN)
+   {
+      if(event->key.keysym.sym == SDLK_x)
+      {
+         x_key = true;
+      }
    }
 }
 
@@ -110,6 +127,7 @@ void update()
       frameTime = 0;
       // add things here
       level_update(&templateLevel);
+      animator_updateFrame(x_animator, 10);
    }
 }
 
@@ -121,7 +139,11 @@ void render()
    SDL_SetRenderDrawColor(renderTarget, 14.0f, 96.0f, 39.0f, 1.0f);
 
    level_render(templateLevel, renderTarget);
-   textBox_render(myText, renderTarget);
+   animator_renderFrame(x_animator, 116 * SCREEN_SCALE, 232 * SCREEN_SCALE, 32 * SCREEN_SCALE, 16 * SCREEN_SCALE, renderTarget);
+   if(x_key == true)
+   {
+      textBox_render(myText, renderTarget);
+   }
 
    // pixel grid lines
    SDL_SetRenderDrawColor(renderTarget, 1.0f, 1.0f, 1.0f, 1.0f);

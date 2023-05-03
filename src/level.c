@@ -20,7 +20,7 @@ level templateLevel =
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w',
       'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w',
-      ' ', ' ', 'l', ' ', ' ', ' ', ' ', ' ', ' ', 'l', ' ', ' ', ' ', ' ', ' ', ' ',
+      ' ', ' ', 'l', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'l', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'l', ' ',
       },
 };
@@ -125,7 +125,7 @@ void level_render(level level, SDL_Renderer *renderTarget)
    }
    
    // Birthday sign
-   SDL_Rect birthdayRect = {32 * SCREEN_SCALE, 16 * SCREEN_SCALE, 192 * SCREEN_SCALE, 69 * SCREEN_SCALE};
+   SDL_Rect birthdayRect = {32 * SCREEN_SCALE, 8 * SCREEN_SCALE, 192 * SCREEN_SCALE, 69 * SCREEN_SCALE};
    SDL_RenderCopy(renderTarget, level.textures[1], NULL, &birthdayRect);
 
    // heart
