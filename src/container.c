@@ -18,12 +18,14 @@ float deltaTime = 0;
 
 // font
 TTF_Font* font = NULL;
-SDL_Color color = {40, 190, 60};
+SDL_Color color = {40, 230, 60};
 
 // keys
 bool x_key = false;
 
 bool running = true;
+
+char *message = "Dear Ava,\n\nIt still amazes me how we came to find each other. You match and pair with me perfectly in all of your incredible ways. I love how you build robots, cook, sing, go to concerts, lifeguard, workout, babysit, and have a wild but fantastic family. You are there for me when I need you and when I am struggling. I do not know where I would be right now without you. It is so funny how we came together. If you had not annoyingly following Bailey around and sat with us for lunch I never would have spoken with you. I will always think about you even when I cannot be with you. Thank you for all the happiness and excitment you give me.\n\nLove, Joseph\n";
 
 int container()
 {
@@ -31,6 +33,8 @@ int container()
    {
       return -1;
    }
+
+   printf("%s", message);
 
    while(running)
    {
@@ -90,7 +94,7 @@ bool initialize()
    }
 
    level_load(&templateLevel, renderTarget);
-   textBox_load(&myText, "Thank you for being there for me. I LOVE you so much.", renderTarget);
+   textBox_load(&myText, "Shine bright today and remeber to have a GOOD TIMES", renderTarget);
 
    x_animator = (animator*) malloc(sizeof(animator));
    x_texture = texture_load("src/images/pressx.png", renderTarget);
